@@ -2,7 +2,12 @@ package com.bemtevi.view;
 
 import com.bemtevi.model.Usuario;
 import com.bemtevi.model.UsuarioComum;
+import com.bemtevi.model.Campanha;
 import com.bemtevi.model.Ong;
+import com.bemtevi.model.DesastreNatural;
+import com.bemtevi.model.Incidente;
+import com.bemtevi.model.Contribuicao;
+import com.bemtevi.model.Administrador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +17,12 @@ public class Main {
     public static void main(String[] args) {
 
         List<Usuario> usuarios = new ArrayList<>();
+        List<Campanha> campanhas = new ArrayList<>();
+        List<DesastreNatural> desastres = new ArrayList<>();
+        List<Incidente> incidentes = new ArrayList<>();
+        List<Contribuicao> contribuicoes = new ArrayList<>();
+
+        Administrador adm = new Administrador();
 
         // Adicionando alguns usuários iniciais
         Usuario u1 = new UsuarioComum("Ana", "ana@email.com", "senha123", "(16) 1111-2345");
@@ -22,6 +33,38 @@ public class Main {
         usuarios.add(u2);
         usuarios.add(o1);
 
+        Campanha c1 = new Campanha(1, "Campanha de alimentos", "Campanha de alimentos para o Rio Grande do Sul", true, 1000, 60, "Rio Grande do Sul");
+        Campanha c2 = new Campanha(2, "Campanha de dinheiro", "Campanha de dinheiro para o Rio Grande do Sul", true, 10000, 60, "Rio Grande do Sul");
+
+        campanhas.add(c1);
+        campanhas.add(c2);
+
+        listarCampanhas(campanhas);
+
+        DesastreNatural d1 = new DesastreNatural("Enchente");
+        DesastreNatural d2 = new DesastreNatural("Terremoto");
+        DesastreNatural d3 = new DesastreNatural("Tsunami");
+        DesastreNatural d4 = new DesastreNatural("Incêndio Florestal");
+        DesastreNatural d5 = new DesastreNatural("Furacão");
+
+
+        Contribuicao cont1 = new Contribuicao("Alimentos");
+        Contribuicao cont2 = new Contribuicao("Roupas");
+        Contribuicao cont3 = new Contribuicao("Brinquedos");
+        Contribuicao cont4 = new Contribuicao("Dinheiro");
+        Contribuicao cont5 = new Contribuicao("Produtos de Higiene");
+
+
+        cadastrar(contribuicoes);
+        listar(contribuicoes);
+
+        cadastrar(desastres);
+        listar(desastres);
+
+        cadastrar(incidentes);
+        listarIncidentesPorData("20/03/2025");
+        listarIncidentesPorLocal("Rio Grande do Sul");
+        
         Scanner ler = new Scanner(System.in);
 
         System.out.println("\n\n");
@@ -35,48 +78,22 @@ public class Main {
             System.out.println("\n\nEscolha uma opção:\n\n    1 - Login\n    2 - Cadastro\n    3 - Sair\n");
             System.out.print("Opção: ");
             int opcao = ler.nextInt();
-            ler.nextLine(); // Limpar o buffer do scanner
+            ler.nextLine(); 
 
             if (opcao == 1) {
                 // Processo de login
                 System.out.println("\nLogin:");
 
-                System.out.print("cE-mail: ");
+                System.out.print("\nE-mail: ");
                 String email = ler.nextLine();
 
-                // Verifica imediatamente se o e-mail é válido
-                boolean emailExistente = false;
-                for (Usuario usuario : usuarios) {
-                    if (usuario.getEmail().equals(email)) {
-                        emailExistente = true;
-                        break; // E-mail encontrado, pode prosseguir com a senha
-                    }
+                if(verificarEmail(usuarios, email)){
+                    System.out.print("Senha: ");
+                    String senha = ler.nextLine();
+                    verificarSenha(usuarios, email, senha);
                 }
 
-                if (!emailExistente) {
-                    System.out.println("E-mail inválido. Tente novamente.");
-                    continue; // Volta para o menu para tentar novamente
-                }
 
-                // Se o e-mail for válido, solicita a senha
-                System.out.print("Senha: ");
-                String senha = ler.nextLine();
-
-                Usuario usuarioLogado = null;
-
-                // Verifica a senha para o e-mail encontrado
-                for (Usuario usuario : usuarios) {
-                    if (usuario.getEmail().equals(email) && usuario.validarSenha(senha)) {
-                        usuarioLogado = usuario;
-                        break;  // Encontra o usuário com o e-mail e senha corretos
-                    }
-                }
-
-                if (usuarioLogado != null) {
-                    System.out.println("Bem-vindo(a), " + usuarioLogado.getNome() + "!");
-                } else {
-                    System.out.println("Senha inválida. Tente novamente.");
-                }
 
             } else if (opcao == 2) {
                 // Processo de cadastro
@@ -105,7 +122,7 @@ public class Main {
                 // Definindo o tipo de usuário
                 System.out.print("Tipo de usuário (1 - Comum / 2 - ONG): ");
                 int tipoUsuario = ler.nextInt();
-                ler.nextLine(); // Limpar o buffer
+                ler.nextLine(); 
 
                 String telefone = null;
                 String cnpj = null;

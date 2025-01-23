@@ -7,24 +7,23 @@ import java.util.List;
     // Métodos: listarIncidentesPorData e listarIncidentesPorLocal 
 
 public class Incidente {
-    private DesastreNatural tipoDesastre; // Associação com DesastreNatural
+    private DesastreNatural nome; // Associação com DesastreNatural
     private String local;                
     private String dataHora;              
 
-    private static List<Incidente> incidentes = new ArrayList<>();
 
-    public Incidente(DesastreNatural tipoDesastre, String local, String dataHora) {
-        this.tipoDesastre = tipoDesastre;
+    public Incidente(DesastreNatural nome, String local, String dataHora) {
+        this.nome = nome;
         this.local = local;
         this.dataHora = dataHora;
     }
 
     public DesastreNatural getTipoDesastre() {
-        return tipoDesastre;
+        return nome;
     }
 
-    public void setTipoDesastre(DesastreNatural tipoDesastre) {
-        this.tipoDesastre = tipoDesastre;
+    public void setTipoDesastre(DesastreNatural nome) {
+        this.nome = nome;
     }
 
     public String getLocal() {
@@ -43,8 +42,11 @@ public class Incidente {
         this.dataHora = dataHora;
     }
 
-    public static void adicionarIncidente(Incidente incidente) {
-        incidentes.add(incidente);
+    @override
+    public void cadastrar(List<Incidente> incidentes) {
+        for (Incidente i : incidentes) {
+            incidentes.add(i);        
+        }
     }
 
     // Listar incidentes por data
@@ -67,13 +69,4 @@ public class Incidente {
         }
     }
     
-
-    @Override
-    public String toString() {
-        return "Incidente{" +
-                "tipoDesastre=" + tipoDesastre +
-                ", local='" + local + '\'' +
-                ", dataHora='" + dataHora + '\'' +
-                '}';
-    }
 }

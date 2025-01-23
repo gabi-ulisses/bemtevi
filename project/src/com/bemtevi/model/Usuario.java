@@ -39,6 +39,39 @@ public abstract class Usuario implements Login {
         return this.senha.equals(senha);
     }
 
+    public static void verificarEmail(List<Usuario> usuarios, String email){
+        boolean emailExistente = false;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getEmail().equals(email)) {
+                emailExistente = true;
+                break; 
+            }
+        }
+
+        if (!emailExistente) {
+            System.out.println("E-mail inválido. Tente novamente."); 
+        }
+    }
+
+    public static void verificarSenha(List<Usuario> usuarios, String email, String senha){
+
+        Usuario usuarioLogado = null;
+
+        // Verifica a senha para o e-mail encontrado
+        for (Usuario usuario : usuarios) {
+            if (usuario.getEmail().equals(email) && usuario.validarSenha(senha)) {
+                usuarioLogado = usuario;
+                break;  
+            }
+        }
+
+        if (usuarioLogado != null) {
+            System.out.println("Bem-vindo(a), " + usuarioLogado.getNome() + "!");
+        } else {
+            System.out.println("Senha inválida. Tente novamente.");
+        }
+    }
+
     // Método abstrato
     public abstract void cadastrarUsuario();
 }

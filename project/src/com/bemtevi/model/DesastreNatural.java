@@ -1,13 +1,8 @@
 package com.bemtevi.model;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class DesastreNatural {
     private String nome;
-
-    private static List<DesastreNatural> desastres = new ArrayList<>();
-
 
     public DesastreNatural(String nome) {
         this.nome = nome;
@@ -21,25 +16,27 @@ public class DesastreNatural {
         this.nome = nome;
     }
 
-    public static void adicionarDesastre(DesastreNatural desastre) {
-        desastres.add(desastre);
+    @override
+    public void cadastrar(List<DesastreNatural> desastres){
+        for (DesastreNatural d : desastres) {
+            desastres.add(d);        
+        }
     }
 
-    public static List<DesastreNatural> listarDesastres() {
-        return desastres;
+    public void listar(List<DesastreNatural> desastres){
+        if (desastres.isEmpty()) {
+            System.out.println("Nenhum desastre cadastrada.");
+        } else {
+            System.out.println("Desastres disponíveis:");
+            for (DesastreNatural d : desastres) {
+                System.out.println(d);
+            }
+        }
     }
 
     @Override
     public String toString() {
         return nome;
-    }
-
-    static {
-        adicionarDesastre(new DesastreNatural("Enchente"));
-        adicionarDesastre(new DesastreNatural("Terremoto"));
-        adicionarDesastre(new DesastreNatural("Tsunami"));
-        adicionarDesastre(new DesastreNatural("Incêndio Florestal"));
-        adicionarDesastre(new DesastreNatural("Furacão"));
     }
     
 }
