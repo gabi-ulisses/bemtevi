@@ -1,7 +1,7 @@
 package com.bemtevi.app.service;
 
 import com.bemtevi.app.model.Ong;
-import com.bemtevi.model.Usuario;
+import com.bemtevi.app.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class UsuarioService implements Gerenciamento, Login{
     }
 
     @Override
-     public static void verificarEmail(List<Usuario> usuarios, String email){
+     public void verificarEmail(List<Usuario> usuarios, String email){
         boolean emailExistente = false;
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email)) {
@@ -37,7 +37,7 @@ public class UsuarioService implements Gerenciamento, Login{
     }
 
     @Override
-    public static void verificarSenha(List<Usuario> usuarios, String email, String senha){
+    public void verificarSenha(List<Usuario> usuarios, String email, String senha){
 
         Usuario usuarioLogado = null;
 

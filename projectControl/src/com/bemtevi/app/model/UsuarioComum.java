@@ -1,6 +1,6 @@
-package com.bemtevi.model;
+package com.bemtevi.app.model;
 
-import com.bemtevi.service.UsuarioService;
+import com.bemtevi.app.service.UsuarioService;
 
 public class UsuarioComum extends Usuario{
 

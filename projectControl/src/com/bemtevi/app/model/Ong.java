@@ -1,7 +1,7 @@
-package com.bemtevi.model;
+package com.bemtevi.app.model;
 
 import com.bemtevi.app.service.Gerenciamento;
-import com.bemtevi.model.Usuario;
+import com.bemtevi.app.model.Usuario;
 
 public class Ong extends Usuario{
 

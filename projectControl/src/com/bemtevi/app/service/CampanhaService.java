@@ -1,7 +1,6 @@
 package com.bemtevi.app.service;
 
-import com.bemtevi.model.Campanha;
-import com.bemtevi.model.Gerenciamento;
+import com.bemtevi.app.model.Campanha;
 
 import java.util.List;
 

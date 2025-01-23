@@ -1,4 +1,4 @@
-package com.bemtevi.model;
+package com.bemtevi.app.model;
 
 public class Administrador{
     private String nome;

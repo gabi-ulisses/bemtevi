@@ -1,9 +1,9 @@
-package com.bemtevi.model;
+package com.bemtevi.app.model;
 
 import com.bemtevi.app.service.Gerenciamento;
 
 public class Campanha{
-    private Contribuicao contribuicao;
+    //private Contribuicao contribuicao;
     private int codigo;
     private String nome;
     private String descricao;

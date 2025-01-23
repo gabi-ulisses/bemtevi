@@ -1,4 +1,4 @@
-package com.bemtevi.model;
+package com.bemtevi.app.model;
 
 import java.util.List;
 
