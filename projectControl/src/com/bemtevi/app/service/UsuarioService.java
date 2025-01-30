@@ -82,4 +82,8 @@ public class UsuarioService implements Gerenciamento, Login{
             System.out.println("Nome: " + usuario.getNome() + ", Email: " + usuario.getEmail());
         }
     }
+
+
+
+    
 }
