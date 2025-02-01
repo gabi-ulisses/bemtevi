@@ -1,46 +1,77 @@
+/**
+ * Classe responsável por representar um incidente e suas informações.
+ * Inclui atributos como tipo de desastre, local e data/hora.
+ * 
+ * A classe permite formatar e manipular dados de um incidente.
+ */
 package com.bemtevi.app.model;
-import java.util.ArrayList;
-import java.util.List;
 
-    // Associação do desastre natural = o tipo do desastre
-    // local e hora da ocorrência
-    // Métodos: listarIncidentesPorData e listarIncidentesPorLocal 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Incidente {
-    private DesastreNatural nome; // Associação com DesastreNatural
-    private String local;                
-    private String dataHora;              
+    private String local;
+    private LocalDateTime dataHora;
+    private TipoDesastre tipoDesastre;
+    private String descricao;  // Para armazenar a descrição customizada se for "OUTRO"
 
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-    public Incidente(DesastreNatural nome, String local, String dataHora) {
-        this.nome = nome;
+    // Construtor normal
+    public Incidente(TipoDesastre tipoDesastre, String local, LocalDateTime dataHora) {
+        this.tipoDesastre = tipoDesastre;
         this.local = local;
         this.dataHora = dataHora;
+        this.descricao = null;  // Nenhuma descrição extra
     }
 
-    public DesastreNatural getTipoDesastre() {
-        return nome;
+    // Construtor para o caso "OUTRO"
+    public Incidente(TipoDesastre tipoDesastre, String local, LocalDateTime dataHora, String descricao) {
+        this.tipoDesastre = tipoDesastre;
+        this.local = local;
+        this.dataHora = dataHora;
+        this.descricao = descricao;  // A descrição será salva se for "OUTRO"
     }
 
-    public void setTipoDesastre(DesastreNatural nome) {
-        this.nome = nome;
+    // Métodos de acesso
+    public TipoDesastre getTipoDesastre() {
+        return tipoDesastre;
     }
 
     public String getLocal() {
         return local;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
-    public String getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(String dataHora) {
-        this.dataHora = dataHora;
+    public String getDescricao() {
+        return descricao;
     }
 
-    
+    public String getDataHoraFormatada() {
+        return this.dataHora.format(FORMATTER);
+    }
+
+/**
+ * Método responsável por listar todos os desastres disponíveis no sistema.
+ * Exibe a descrição de cada tipo de desastre.
+ */
+    public static void listarDesastres() {
+        for (TipoDesastre desastre : TipoDesastre.values()) {
+            System.out.println(" •  " + desastre.getDescricao());
+        }
+    }
+
+    @Override
+    public String toString() {
+        // Mostra a descrição personalizada se for "OUTRO"
+        return "Incidente{" +
+                "   Classificação='" + tipoDesastre.getDescricao() + '\'' +
+                ", Local='" + local + '\'' +
+                ", Data e hora=" + getDataHoraFormatada() +
+                (descricao != null ? ", Descrição='" + descricao + '\'' : "") +
+                '}';
+    }
 }

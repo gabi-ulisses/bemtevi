@@ -1,39 +1,46 @@
 package com.bemtevi.app.service;
 
-public class IncidenteService implements Gerenciamento{
+import com.bemtevi.app.interfaces.Gerenciavel;
+import com.bemtevi.app.model.Incidente;
+import java.time.LocalDate;
+import java.util.List;
 
-    @override
-    public void cadastrar(List<Incidente> incidentes) {
-        for (Incidente i : incidentes) {
-            incidentes.add(i);        
+public class IncidenteService implements Gerenciavel<Incidente> {
+
+    @Override
+    public void cadastrar(Incidente incidente, List<Incidente> lista) {
+        lista.add(incidente);
+        System.out.println("Incidente cadastrado com sucesso!");
+    }
+
+    @Override
+    public List<Incidente> listar(List<Incidente> lista) {
+        for (Incidente incidente : lista) {
+            System.out.println(incidente);
         }
+        return lista;
     }
 
     // Listar incidentes por data
-    public static void listarIncidentesPorData(String data) {
+    public void listarIncidentesPorData(String data, List<Incidente> lista) {
+        LocalDate dataConsultada = LocalDate.parse(data); // Converte a string de data para LocalDate
+
         System.out.println("Incidentes na data: " + data);
-        for (Incidente incidente : incidentes) {
-            if (incidente.getDataHora().startsWith(data)) {
+        for (Incidente incidente : lista) {
+            // Verifica se a data do incidente é igual à data consultada
+            if (incidente.getDataHora().toLocalDate().isEqual(dataConsultada)) {
                 System.out.println(incidente);
             }
         }
     }
 
     // Listar incidentes por local
-    public static void listarIncidentesPorLocal(String local) {
+    public void listarIncidentesPorLocal(String local, List<Incidente> lista) {
         System.out.println("Incidentes no local: " + local);
-        for (Incidente incidente : incidentes) {
+        for (Incidente incidente : lista) {
             if (incidente.getLocal().equalsIgnoreCase(local)) {
                 System.out.println(incidente);
             }
-        }
-    }
-
-    // Listar todos os incidentes
-    @Override
-    public void listar(List<Incidente> incidentes) {
-        for (Usuario i : incidentes) {
-            System.out.println("Local: " + i.getLocal() + ", Nome: " + i.getNome() + ", Data e  Hora: " + i.getDataHora());
         }
     }
 }
