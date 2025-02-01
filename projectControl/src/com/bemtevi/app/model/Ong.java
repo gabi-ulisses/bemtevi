@@ -1,8 +1,5 @@
 package com.bemtevi.app.model;
 
-import com.bemtevi.app.service.Gerenciamento;
-import com.bemtevi.app.model.Usuario;
-
 public class Ong extends Usuario{
 
     private String cnpj;
@@ -19,4 +16,10 @@ public class Ong extends Usuario{
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
+
+    @Override
+    public boolean validarSenha(String senha) {
+        return this.getSenha().equals(senha);
+    }
+
 }

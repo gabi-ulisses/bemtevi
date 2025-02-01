@@ -1,53 +1,39 @@
 package com.bemtevi.app.model;
 
-import com.bemtevi.app.service.Gerenciamento;
+public class Contribuicao {
+    private TipoContribuicao tipoContribuicao;  // Alterando para usar o enum
+    private Usuario usuario;                    // Pessoa que está contribuindo
+    private Campanha campanha;                  // Campanha à qual está sendo feita a contribuição
 
-public class Contribuicao implements Gerenciamento{
-    // TipoContribuicao: alimento, dinheiro, roupas, brinquedos
-
-      
-    /*
-        Métodos:
-
-     *  valorArrecadado - se for Dinheiro
-     *  kilosArrecadado - se for Alimento, roupas e brinquedos
-     */
-
-
-    private String TipoContribuicao;
-
-    public Contribuicao(String TipoContribuicao){
-        this.TipoContribuicao = TipoContribuicao;
+    // Construtor
+    public Contribuicao(TipoContribuicao tipoContribuicao, Usuario usuario, Campanha campanha) {
+        this.tipoContribuicao = tipoContribuicao;
+        this.usuario = usuario;
+        this.campanha = campanha;
     }
 
-    public String getTipoContribuicao(){
-        return TipoContribuicao;
+    // Getters e Setters
+    public TipoContribuicao getTipoContribuicao() {
+        return tipoContribuicao;
     }
 
-    public void setTipoContribuicao(String tipoContribuicao){
+    public void setTipoContribuicao(TipoContribuicao tipoContribuicao) {
         this.tipoContribuicao = tipoContribuicao;
     }
 
-    @Override
-    public void cadastrar(List<Contribuicao> contribuicoes) {
-        for (Contribuicao c : Contribuicao) {
-            campanhas.add(c);        
-        }
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-
-    @Override
-    public void listar(List<Contribuicao> contribuicoes) {
-        if (contribuicoes.isEmpty()) {
-            System.out.println("Nenhuma contribuição cadastrada.");
-        } else {
-            System.out.println("Contribuições disponíveis:");
-            for (Contribuicao c : contribuicoes) {
-                System.out.println(c);
-            }
-        }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
+    public Campanha getCampanha() {
+        return campanha;
+    }
 
-
+    public void setCampanha(Campanha campanha) {
+        this.campanha = campanha;
+    }
 }

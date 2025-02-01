@@ -1,9 +1,5 @@
 package com.bemtevi.app.model;
 
-import java.util.List;
-
-import com.bemtevi.app.service.Login;
-
 public abstract class Usuario{
     private String nome;
     private String email;
@@ -17,7 +13,6 @@ public abstract class Usuario{
         this.senha = senha;
     }
 
-    // Métodos de acesso (getters)
     public String getNome() {
         return nome;
     }
@@ -33,5 +28,7 @@ public abstract class Usuario{
     public String getSenha() {
         return senha;
     }
+
+    public abstract boolean validarSenha(String senha);
 }
 

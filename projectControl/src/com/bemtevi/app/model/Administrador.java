@@ -1,11 +1,23 @@
 package com.bemtevi.app.model;
 
-public class Administrador{
-    private String nome;
-    private int mfa;
+public class Administrador extends Usuario{
+    private String mfa;
 
-    public Administrador(){
-        this.nome = "admin";
-        this.mfa = 12345;
+    public Administrador(String nome, String email, String telefone, String senha, String mfa){
+        super("admin", email, telefone, "root12@3");
+        this.mfa = "123IF@AG";
+    }
+
+    public String getMfa() {
+        return mfa;
+    }
+
+    public void setMfa(String mfa) {
+        this.mfa = mfa;
+    }
+
+    @Override
+    public boolean validarSenha(String senha) {
+        return this.getSenha().equals(senha);
     }
 }
