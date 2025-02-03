@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
         List<Usuario> usuarios = new ArrayList<>();
+        List<Incidente> incidentes = new ArrayList<>(); 
         UsuarioService usuarioService = new UsuarioService();
 
         System.out.println("\n\n");
@@ -42,7 +43,7 @@ public class Main {
                 if (usuarioLogado != null) {
                     // Acesso ao menu do usuário após login bem-sucedido
                     if (usuarioLogado instanceof Administrador) {
-                        AdministradorView.menu();
+                        AdministradorView.menu(usuarios, incidentes);
                     } else if (usuarioLogado instanceof Ong) {
                         // Passa diretamente o objeto Ong para o menu
                         Ong ongLogada = (Ong) usuarioLogado;
