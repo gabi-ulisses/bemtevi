@@ -8,11 +8,11 @@ public class UsuarioService {
     public Usuario autenticar(List<Usuario> usuarios, String email, String senha) {
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email) && usuario.validarSenha(senha)) {
-                System.out.println("Bem-vindo(a), " + usuario.getNome() + "!");
+                System.out.println("\n              Bem-vindo(a), " + usuario.getNome() + "!");
                 return usuario;
             }
         }
-        System.out.println("Email ou senha inválidos.");
+        System.out.println("\nEmail ou senha inválidos.");
         return null;
     }
 

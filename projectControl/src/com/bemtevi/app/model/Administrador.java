@@ -3,8 +3,8 @@ package com.bemtevi.app.model;
 public class Administrador extends Usuario{
     private String mfa;
 
-    public Administrador(String nome, String email, String telefone, String senha, String mfa){
-        super("admin", email, telefone, "root12@3");
+    public Administrador(){
+        super("admin", "root@localhost", "40028922", "root12@3");
         this.mfa = "123IF@AG";
     }
 

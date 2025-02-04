@@ -21,35 +21,42 @@ public class Main {
         System.out.println("  BBBBB   EEEE   M M M M    T    EEEE   V   V   I ");
         System.out.println("  B    B  E      M  M  M    T    E      V   V   I ");
         System.out.println("  BBBBB   EEEEE  M     M    T    EEEEE   VVV    I ");
-        
+
+        System.out.println("\n\nBem-vindo!");
+
         boolean continua = true;
         while (continua) {
-            System.out.println("\n\nBem-vindo!");
-            System.out.println("\n\nEscolha uma opção:\n\n    1 - Login\n    2 - Cadastro\n    3 - Sair\n");
+            
+            System.out.println("\n\nEscolha uma opção:\n\n    1 - Login\n    2 - Cadastro\n    3 - Fechar\n");
             System.out.print("Opção: ");
             int escolha = ler.nextInt();
             ler.nextLine();
-        
+            
+            Administrador admin = new Administrador();
+            usuarios.add(admin);
+
             Usuario usuarioLogado = null;
 
             if (escolha == 1) {
                 // LOGIN
-                System.out.print("Email: ");
+                System.out.print("\n    Email: ");
                 String email = ler.nextLine();
-                System.out.print("Senha: ");
+                System.out.print("    Senha: ");
                 String senha = ler.nextLine();
                 usuarioLogado = usuarioService.autenticar(usuarios, email, senha);
                 
                 if (usuarioLogado != null) {
+
                     // Acesso ao menu do usuário após login bem-sucedido
+
                     if (usuarioLogado instanceof Administrador) {
-                        AdministradorView.menu(usuarios, incidentes);
+                        AdministradorView.menu(usuarios, incidentes, ler);
                     } else if (usuarioLogado instanceof Ong) {
-                        // Passa diretamente o objeto Ong para o menu
-                        Ong ongLogada = (Ong) usuarioLogado;
-                        OngView.menu(ongLogada); 
+                       
+                        Ong ongLogada = (Ong) usuarioLogado; // Passa diretamente o objeto Ong para o menu
+                        OngView.menu(ongLogada, ler); 
                     } else {
-                        UsuarioComumView.menu(usuarioLogado);
+                        UsuarioComumView.menu(usuarioLogado, ler);
                     }
                 } else {
                     System.out.println("Falha na autenticação!");
@@ -67,7 +74,7 @@ public class Main {
                 String telefone = ler.nextLine();
                 System.out.print("      Senha: ");
                 String senha = ler.nextLine();
-                System.out.print("      Tipo de usuário (1 - Usuário Comum, 2 - ONG, 3 - Administrador): ");
+                System.out.print("      Tipo de usuário (1 - Usuário Comum, 2 - ONG): ");
                 int tipo = ler.nextInt();
                 ler.nextLine();
 
@@ -77,10 +84,6 @@ public class Main {
                     System.out.print("      CNPJ: ");
                     String cnpj = ler.nextLine();
                     usuarioLogado = new Ong(nome, email, telefone, senha, cnpj);
-                } else if (tipo == 3) {
-                    System.out.print("      MFA: ");
-                    String mfa = ler.nextLine();
-                    usuarioLogado = new Administrador(nome, email, telefone, senha, mfa);
                 }
                 
                 if (usuarioLogado != null) {

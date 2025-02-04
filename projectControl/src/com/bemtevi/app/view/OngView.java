@@ -11,13 +11,13 @@ public class OngView {
     private static List<Campanha> campanhas = new ArrayList<>();
     private static CampanhaService campanhaService = new CampanhaService();
 
-    public static void menu(Ong onglogada) {
-        Scanner ler = new Scanner(System.in);
+    public static void menu(Ong onglogada, Scanner ler) {
+
         while (true) {
             System.out.println("\n=== MENU ONG ===\n ");
             System.out.println("1 - Cadastrar Campanha");
             System.out.println("2 - Listar minhas campanhas");
-            System.out.println("3 - Sair");
+            System.out.println("3 - Logout");
             System.out.print("\nOpção: ");
             int opcao = ler.nextInt();
             ler.nextLine(); // Consumir o newline após o nextInt
@@ -78,9 +78,9 @@ public class OngView {
             } else if (opcao == 2) {
                 campanhaService.listarCampanhasDaOng(onglogada, campanhas);
             } else {
+                System.out.println("\n          Obrigada por utilizar nosso sistema, " + onglogada.getNome() +"!");
                 break;
             }
         }
-        ler.close();
     }
 }

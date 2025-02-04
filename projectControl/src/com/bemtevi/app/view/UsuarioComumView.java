@@ -16,15 +16,15 @@ public class UsuarioComumView {
     private static CampanhaService campanhaService = new CampanhaService();
     private static ContribuicaoService contribuicaoService = new ContribuicaoService();
 
-    public static void menu(Usuario usuarioLogado) {
-        Scanner ler = new Scanner(System.in);
+    public static void menu(Usuario usuarioLogado, Scanner ler) {
+
         while (true) {
             System.out.println("\n=== MENU USUÁRIO COMUM ===\n");
             System.out.println("1 - Cadastrar Incidente");
             System.out.println("2 - Listar Incidentes");
             System.out.println("3 - Listar Campanhas");
             System.out.println("4 - Cadastrar Contribuição");
-            System.out.println("5 - Sair");
+            System.out.println("5 - Logout");
             System.out.print("\nOpção: ");
             int opcao = ler.nextInt();
             ler.nextLine();
@@ -152,10 +152,12 @@ public class UsuarioComumView {
 
             } else if (opcao == 4) {
                 campanhaService.listar(campanhas);
-            } else {
+            } else if(opcao == 5){
+                System.out.println("\n          Obrigada por utilizar nosso sistema, " + usuarioLogado.getNome() +"!");
                 break;
+            }else{
+                System.out.println("\nOpção inválida!");
             }
         }
-        ler.close();
     }
 }
