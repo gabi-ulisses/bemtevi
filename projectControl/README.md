@@ -1,18 +1,47 @@
-## Getting Started
+# BemTeVi: Sempre atento, sempre ao lado
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Sistema de gerenciamento e monitoramento de desastres naturais com linguagem Java.
 
-## Folder Structure
+O Brasil é frequentemente impactado por desastres naturais, como enchentes, deslizamentos e queimadas. Nesse contexto, o BemTeVi foi idealizado para centralizar a comunicação e a colaboração em situações emergenciais, promovendo agilidade e solidariedade. O sistema tem como objetivo principal centralizar a gestão e o monitoramento de desastres naturais, além de facilitar campanhas de arrecadação para mitigar os impactos desses eventos.
 
-The workspace contains two folders by default, where:
+*Autoras:*
+Ana Beatriz Duarte e Gabrielle Ulisses
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+---
+ ## Pré-requisitos
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- **JDK:**  
+  Certifique-se de ter o Java Development Kit instalado e a variável `JAVA_HOME` configurada corretamente.
+- **Visual Studio Code:**  
+  Ambiente de desenvolvimento recomendado.  
+  Instale a extensão _Extension Pack for Java_ para facilitar a compilação e execução do código.
+- **Compilador Java:**  
+  Geralmente, o compilador (`javac`) já vem junto com o JDK.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+---
+## Execução
 
-## Dependency Management
+1. **Clone o repositório:**
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+   ```bash
+   git clone <URL-do-repositório>
+
+Após clonar o repositório, siga estes passos:
+
+2. **Abra o Projeto no VS Code:**
+
+   - Abra o Visual Studio Code.
+   - Vá em **File > Open Folder...** e selecione a pasta do projeto.
+
+3. **Compile e Execute o Código:**
+
+   - Abra o terminal integrado do VS Code (ou utilize o terminal do seu sistema).
+   - Navegue até a pasta onde está o arquivo Java que deseja compilar.
+   - Compile o arquivo Java:
+     ```bash
+     javac NomeDoArquivo.java
+     ```
+   - Execute o código compilado:
+     ```bash
+     java NomeDoArquivo
+     ```

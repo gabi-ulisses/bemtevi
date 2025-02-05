@@ -3,6 +3,17 @@ package com.bemtevi.app.service;
 import com.bemtevi.app.model.*;
 import java.util.List;
 
+/**
+ * Classe responsável pelos serviços de gerenciamento administrativos no sistema.
+ * 
+ * A classe oferece métodos para:
+ * - Listar todas as campanhas cadastradas
+ * - Listar todos os usuários cadastrados
+ * - Gerar relatórios contendo dados sobre o total de campanhas, usuários e incidentes
+ * 
+ * Esses métodos auxiliam o administrador a visualizar informações gerais do sistema, 
+ * bem como gerar relatórios consolidados sobre as atividades realizadas.
+ */
 public class AdministradorService {
 
     public AdministradorService(){}

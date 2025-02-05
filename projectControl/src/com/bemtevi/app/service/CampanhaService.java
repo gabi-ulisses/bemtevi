@@ -6,6 +6,17 @@ import com.bemtevi.app.interfaces.Gerenciavel;
 
 import java.util.List;
 
+/**
+ * Classe responsável pelos serviços de gerenciamento de campanhas.
+ * 
+ * A classe implementa a interface Gerenciavel<Campanha> e oferece métodos para:
+ * - Cadastrar novas campanhas
+ * - Listar todas as campanhas cadastradas
+ * - Listar campanhas específicas de uma ONG logada
+ * 
+ * Os métodos interagem com a lista de campanhas e permitem que a ONG gerencie suas campanhas, 
+ * como visualizar suas próprias campanhas e visualizar todas as campanhas cadastradas no sistema.
+ */
 public class CampanhaService implements Gerenciavel<Campanha> {
 
     @Override

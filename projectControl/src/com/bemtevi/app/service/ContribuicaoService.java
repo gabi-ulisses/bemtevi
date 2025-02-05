@@ -5,6 +5,15 @@ import com.bemtevi.app.model.Contribuicao;
 
 import java.util.List;
 
+/**
+ * Classe responsável pela gestão de contribuições.
+ * 
+ * A classe implementa a interface `Gerenciavel` para fornecer os serviços de cadastro e listagem de contribuições.
+ * 
+ * Métodos disponíveis:
+ * - `cadastrar`: Cadastra uma nova contribuição na lista.
+ * - `listar`: Exibe todas as contribuições cadastradas.
+ */
 public class ContribuicaoService implements Gerenciavel<Contribuicao> {
 
     @Override

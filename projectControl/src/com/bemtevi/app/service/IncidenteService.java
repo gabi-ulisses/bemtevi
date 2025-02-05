@@ -1,11 +1,20 @@
 package com.bemtevi.app.service;
 
 import com.bemtevi.app.interfaces.Gerenciavel;
-import com.bemtevi.app.model.Campanha;
 import com.bemtevi.app.model.Incidente;
-import java.time.LocalDate;
+
 import java.util.List;
 
+/**
+ * Classe responsável pela gestão de incidentes.
+ * 
+ * A classe implementa a interface `Gerenciavel` para fornecer os serviços de cadastro e listagem de incidentes.
+ * 
+ * Métodos disponíveis:
+ * - `cadastrar`: Cadastra um novo incidente na lista.
+ * - `listar`: Exibe todos os incidentes cadastrados.
+ * - `listarIncidentesPorLocal`: Exibe os incidentes filtrados por local.
+ */
 public class IncidenteService implements Gerenciavel<Incidente> {
 
     @Override
@@ -18,26 +27,13 @@ public class IncidenteService implements Gerenciavel<Incidente> {
     public List<Incidente> listar(List<Incidente> lista) {
         if (lista.isEmpty()) {
             System.out.println("Nenhum incidente cadastrado.");
-        }else{
+        } else {
             System.out.println("Incidentes cadastrados:");
             for (Incidente incidente : lista) {
                 System.out.println(incidente);
             }
         }
         return lista;
-    }
-
-    // Listar incidentes por data
-    public void listarIncidentesPorDataHora(String data, List<Incidente> lista) {
-        LocalDate dataConsultada = LocalDate.parse(data); // Converte a string de data para LocalDate
-
-        System.out.println("Incidentes na data: " + data);
-        for (Incidente incidente : lista) {
-            // Verifica se a data do incidente é igual à data consultada
-            if (incidente.getDataHora().toLocalDate().isEqual(dataConsultada)) {
-                System.out.println(incidente);
-            }
-        }
     }
 
     // Listar incidentes por local

@@ -1,5 +1,22 @@
 package com.bemtevi.app.model;
 
+/**
+ * Classe responsável por representar uma campanha de arrecadação, contendo informações
+ * detalhadas sobre a campanha, incluindo o código, nome, descrição, meta de arrecadação,
+ * duração, local de atuação e a organização responsável pela campanha.
+ * 
+ * A classe também inclui o tipo de contribuição aceito na campanha (definido por um enum `TipoContribuicao`)
+ * e permite o acesso e a manipulação dessas informações, como a identificação fiscal e o valor da meta
+ * de arrecadação, entre outros.
+ * 
+ * Métodos principais:
+ * - **getCodigo**: Retorna o código único da campanha.
+ * - **getNome**: Retorna o nome da campanha.
+ * - **getDescricao**: Retorna a descrição da campanha.
+ * - **getOrganizacao**: Retorna a organização responsável pela campanha.
+ * - **getTipoContribuicao**: Retorna o tipo de contribuição (como dinheiro ou bens).
+ * - **toString**: Retorna uma representação textual completa da campanha, incluindo todos os seus atributos.
+ */
 public class Campanha {
     private String codigo;
     private String nome;
@@ -57,7 +74,7 @@ public class Campanha {
 
     @Override
     public String toString() {
-        return "Campanha{" +
+        return "\nCampanha{" +
                 "codigo='" + codigo + '\'' +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
