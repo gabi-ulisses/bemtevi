@@ -22,14 +22,17 @@ public class ContribuicaoService implements Gerenciavel<Contribuicao> {
         System.out.println("Contribuição cadastrada: " + contribuicao.getTipoContribuicao());
     }
 
+
+    // Não está implementado, mas como melhoria futura será uma opção da ONG listar as contribuições.
+
     @Override
     public List<Contribuicao> listar(List<Contribuicao> lista) {
         if (lista.isEmpty()) {
             System.out.println("Nenhuma contribuição cadastrada.");
         } else {
             System.out.println("Contribuições disponíveis:");
-            for (Contribuicao item : lista) {
-                System.out.println("- " + item.getTipoContribuicao());
+            for (Contribuicao contribuicao : lista) {
+                System.out.println(contribuicao);
             }
         }
         return lista;

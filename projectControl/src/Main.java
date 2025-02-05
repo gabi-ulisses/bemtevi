@@ -44,20 +44,15 @@ public class Main {
         System.out.println("  BBBBB   EEEEE  M     M    T    EEEEE   VVV    I ");
         System.out.println("\n\nBem-vindo!");
 
-        boolean continua = true;
+        
         Administrador admin = new Administrador();
         usuarios.add(admin);
+
+        boolean continua = true;
 
         while (continua) {
             System.out.println("\n\nEscolha uma opção:\n\n    1 - Login\n    2 - Cadastro\n    3 - Fechar\n");
             System.out.print("Opção: ");
-            
-            if (!ler.hasNextInt()) {
-                System.out.println("\nOpção inválida! Por favor, insira um número.");
-                ler.nextLine(); // Limpa o buffer
-                continue;
-            }
-            
             int escolha = ler.nextInt();
             ler.nextLine();
 
@@ -65,7 +60,7 @@ public class Main {
 
             if ((escolha != 1) && (escolha != 2) && (escolha != 3)) {
                 System.out.println("\nOpção inválida!");
-            } else {
+            }else {
                 switch (escolha) {
                     case 1:
                         System.out.print("\n    Email: ");
@@ -104,22 +99,9 @@ public class Main {
                         String telefone = ler.nextLine();
                         System.out.print("      Senha: ");
                         senha = ler.nextLine();
+                        System.out.print("      Tipo de usuário (1 - Usuário Comum, 2 - ONG): ");
+                        int tipo = ler.nextInt();
                         
-                        int tipo = 0;
-                        while (tipo != 1 && tipo != 2) {
-                            System.out.print("      Tipo de usuário (1 - Usuário Comum, 2 - ONG): ");
-                            if (ler.hasNextInt()) {
-                                tipo = ler.nextInt();
-                                ler.nextLine(); // Limpar o buffer
-                                if (tipo != 1 && tipo != 2) {
-                                    System.out.println("Tipo inválido! Tente novamente.");
-                                }
-                            } else {
-                                System.out.println("Entrada inválida! Tente novamente.");
-                                ler.nextLine(); // Limpar o buffer
-                            }
-                        }
-
                         if (tipo == 1) {
                             usuarioLogado = new UsuarioComum(nome, email, telefone, senha);
                         } else if (tipo == 2) {
@@ -144,6 +126,6 @@ public class Main {
                 }
             }
         }
-        ler.close(); // Fecha o scanner quando a aplicação for encerrada
+        ler.close(); 
     }
 }

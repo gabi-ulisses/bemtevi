@@ -30,11 +30,6 @@ public class Ong extends Usuario {
         this.cnpj = cnpj;
     }
 
-    public Ong(){
-        super("ong1", "ong@", "1234", "12");
-        this.cnpj = "1234567";
-    }
-
     public String getCnpj() {
         return cnpj;
     }

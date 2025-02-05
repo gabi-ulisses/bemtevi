@@ -16,8 +16,6 @@ import java.util.List;
  */
 public class AdministradorService {
 
-    public AdministradorService(){}
-
     public static List<Campanha> listarCampanhas(List<Campanha> campanhas) {
         if (campanhas.isEmpty()) {
             System.out.println("\nNenhuma campanha cadastrada.");

@@ -53,51 +53,50 @@ public class UsuarioComumView {
 
             switch (opcao) {
                 case 1:
-                    // Exibindo as opções de desastre
+  
                     System.out.println("\n  Qual a classificação do desastre?");
                     Incidente.listarDesastres();  // Usando o método da classe Incidente
 
                     String classificacao = "";
                     boolean isValid = false;
 
-                    // Loop para garantir que o tipo de desastre seja válido
-                    while (!isValid) {
-                        System.out.print("\n    Classificação: ");
-                        classificacao = ler.nextLine();
+                        // Loop para garantir que o tipo de desastre seja válido
+                        while (!isValid) {
+                            System.out.print("\n    Classificação: ");
+                            classificacao = ler.nextLine();
 
-                        // Verificando se a classificação corresponde a um valor válido do enum
-                        isValid = false;
-                        for (TipoDesastre desastre : TipoDesastre.values()) {
-                            if (desastre.getDescricao().equalsIgnoreCase(classificacao)) {
-                                isValid = true;
-                                break;
+                            // Verificando se a classificação corresponde a um valor válido do enum
+                            isValid = TipoDesastre.existeTipoDesastre(classificacao);
+
+                            if (!isValid && !classificacao.equalsIgnoreCase("Outro")) {
+                                System.out.println("\nTipo de desastre inválido. Tente novamente.");
                             }
                         }
 
-                        if (!isValid && !classificacao.equalsIgnoreCase("Outro")) {
-                            System.out.println("\nTipo de desastre inválido. Tente novamente.");
+                        // Se for "Outro", permitir que o usuário digite a descrição
+                        if (classificacao.equalsIgnoreCase("Outro")) {
+                            System.out.print("    Digite o nome do desastre: ");
+                            classificacao = ler.nextLine();  // O usuário digita o tipo de desastre
                         }
-                    }
 
-                    // Se for "Outro", permitir que o usuário digite a descrição
-                    if (classificacao.equalsIgnoreCase("Outro")) {
-                        System.out.print("    Digite o nome do desastre: ");
-                        classificacao = ler.nextLine();  // O usuário digita o tipo de desastre
-                    }
+                        System.out.print("    Local do incidente: ");
+                        String local = ler.nextLine();
 
-                    System.out.print("    Local do incidente: ");
-                    String local = ler.nextLine();
+                        TipoDesastre tipoDesastre;
+                        if (TipoDesastre.existeTipoDesastre(classificacao)) {
+                            tipoDesastre = TipoDesastre.valueOf(classificacao.toUpperCase());  // Transformando para o enum
+                        } else {
+                            tipoDesastre = TipoDesastre.OUTRO;  // Se não corresponder, define como "OUTRO"
+                        }
 
-                    // Criando o incidente sem data e hora
-                    TipoDesastre tipoDesastre = TipoDesastre.valueOf(classificacao.toUpperCase());  // Transformando para o enum
+                        if (tipoDesastre == TipoDesastre.OUTRO) {
+                            // Para o caso "OUTRO", vamos usar a descrição personalizada digitada
+                            incidenteService.cadastrar(new Incidente(tipoDesastre, local, classificacao), incidentes);
+                        } else {
+                            // Para os outros tipos, usamos o enum diretamente
+                            incidenteService.cadastrar(new Incidente(tipoDesastre, local), incidentes);
+                        }
 
-                    if (tipoDesastre == TipoDesastre.OUTRO) {
-                        // Para o caso "OUTRO", vamos usar a descrição personalizada digitada
-                        incidenteService.cadastrar(new Incidente(tipoDesastre, local, classificacao), incidentes);
-                    } else {
-                        // Para os outros tipos, usamos o enum diretamente
-                        incidenteService.cadastrar(new Incidente(tipoDesastre, local), incidentes);
-                    }
                     break;
 
                 case 2:
