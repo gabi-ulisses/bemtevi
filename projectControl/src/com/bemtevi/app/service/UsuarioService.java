@@ -1,10 +1,12 @@
 package com.bemtevi.app.service;
 
+import com.bemtevi.app.interfaces.Autenticavel;
 import com.bemtevi.app.model.Usuario;
 import java.util.List;
 
-public class UsuarioService {
+public class UsuarioService implements Autenticavel{
 
+    @Override
     public Usuario autenticar(List<Usuario> usuarios, String email, String senha) {
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email) && usuario.validarSenha(senha)) {
@@ -17,6 +19,7 @@ public class UsuarioService {
     }
 
     // Métodos de verificação de email e senha
+    @Override
     public void verificarSenha(List<Usuario> usuarios, String email, String senha) {
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email) && usuario.validarSenha(senha)) {
@@ -27,6 +30,7 @@ public class UsuarioService {
         System.out.println("Senha inválida.");
     }
 
+    @Override
     public void verificarEmail(List<Usuario> usuarios, String email) {
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email)) {

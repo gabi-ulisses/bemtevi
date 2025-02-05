@@ -11,7 +11,7 @@ public class OngView {
     private static List<Campanha> campanhas = new ArrayList<>();
     private static CampanhaService campanhaService = new CampanhaService();
 
-    public static void menu(Ong onglogada, Scanner ler) {
+    public static void menu(Ong onglogada, List<Campanha> campanhas, Scanner ler) {
 
         while (true) {
             System.out.println("\n=== MENU ONG ===\n ");

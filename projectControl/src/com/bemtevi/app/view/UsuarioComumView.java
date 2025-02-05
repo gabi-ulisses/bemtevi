@@ -16,7 +16,7 @@ public class UsuarioComumView {
     private static CampanhaService campanhaService = new CampanhaService();
     private static ContribuicaoService contribuicaoService = new ContribuicaoService();
 
-    public static void menu(Usuario usuarioLogado, Scanner ler) {
+    public static void menu(Usuario usuarioLogado, List<Campanha> campanhas, Scanner ler) {
 
         while (true) {
             System.out.println("\n=== MENU USUÁRIO COMUM ===\n");
@@ -82,20 +82,20 @@ public class UsuarioComumView {
 
             } else if (opcao == 2) {
                 // Apresentar as opções para listar incidentes
-                System.out.println("=== LISTAR INCIDENTES ===");
-                System.out.println("1 - Listagem geral de incidentes");
-                System.out.println("2 - Listar Incidentes por Hora");
-                System.out.println("3 - Listar Incidentes por Local");
-
+                System.out.println("\n=== LISTAR INCIDENTES ===\n");
+                System.out.println("    1 - Listagem geral de incidentes");
+                System.out.println("    2 - Listar Incidentes por Hora");
+                System.out.println("    3 - Listar Incidentes por Local");
+                System.out.print("\nOpção: ");
                 int opcaoListagem = ler.nextInt();
                 ler.nextLine();  // Consumir o newline deixado pelo nextInt()
 
                 if (opcaoListagem == 1) {
                     incidenteService.listar(incidentes);  // Listagem geral de incidentes
                 } else if (opcaoListagem == 2) {
-                    System.out.print("Digite a data (formato dd/MM/yyyy): ");
+                    System.out.print("Digite a data e hora(formato dd/MM/yyyy): ");
                     String dataHora = ler.nextLine();
-                    incidenteService.listarIncidentesPorData(dataHora, incidentes);  // Listar incidentes por data
+                    incidenteService.listarIncidentesPorDataHora(dataHora, incidentes);  // Listar incidentes por data
                 } else if (opcaoListagem == 3) {
                     System.out.print("Digite o local: ");
                     String local = ler.nextLine();
@@ -104,7 +104,8 @@ public class UsuarioComumView {
                     System.out.println("Opção inválida!");
                 }
             } else if (opcao == 3) {
-
+                campanhaService.listar(campanhas);
+            } else if (opcao == 4) {
                 System.out.println("\n=== CAMPANHAS DISPONÍVEIS ===\n");
                 for (int i = 0; i < campanhas.size(); i++) {
                     Campanha campanha = campanhas.get(i);
@@ -150,8 +151,6 @@ public class UsuarioComumView {
                     System.out.println("Opção inválida! Nenhuma contribuição foi registrada.");
                 }
 
-            } else if (opcao == 4) {
-                campanhaService.listar(campanhas);
             } else if(opcao == 5){
                 System.out.println("\n          Obrigada por utilizar nosso sistema, " + usuarioLogado.getNome() +"!");
                 break;

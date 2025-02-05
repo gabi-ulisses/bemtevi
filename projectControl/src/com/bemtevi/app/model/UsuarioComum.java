@@ -6,6 +6,10 @@ public class UsuarioComum extends Usuario{
         super(nome, email, telefone, senha);
     }
 
+    public UsuarioComum(){
+        super("ana", "ana@", "1234", "12");
+    }
+
     @Override
     public boolean validarSenha(String senha) {
         return this.getSenha().equals(senha);

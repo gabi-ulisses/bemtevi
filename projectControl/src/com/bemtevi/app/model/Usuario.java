@@ -30,5 +30,14 @@ public abstract class Usuario{
     }
 
     public abstract boolean validarSenha(String senha);
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                '}';
+    }
 }
 

@@ -1,15 +1,12 @@
 package com.bemtevi.app.view;
 
 import com.bemtevi.app.model.*;
-import java.util.ArrayList;
+import com.bemtevi.app.service.AdministradorService;
 import java.util.List;
 import java.util.Scanner;
 
 public class AdministradorView {
-    private static final List<Campanha> campanhas = new ArrayList<>();
-
-    public static void menu(List<Usuario> usuarios, List<Incidente> incidentes, Scanner ler) {
-
+    public static void menu(List<Usuario> usuarios, List<Incidente> incidentes,List<Campanha> campanhas, Scanner ler) {
         boolean continua = true;
 
         while (continua) {
@@ -24,13 +21,13 @@ public class AdministradorView {
 
             switch (opcao) {
                 case 1:
-                    listarCampanhas();
+                    AdministradorService.listarCampanhas(campanhas);
                     break;
                 case 2:
-                    listarUsuarios(usuarios);
+                    AdministradorService.listarUsuarios(usuarios);
                     break;
                 case 3:
-                    gerarRelatorios(usuarios, incidentes);
+                    AdministradorService.gerarRelatorios(usuarios, incidentes, campanhas);
                     break;
                 case 4:
                     continua = false;
@@ -39,38 +36,5 @@ public class AdministradorView {
                     System.out.println("\nOpção inválida! Tente novamente.");
             }
         }
-    }
-
-    private static void listarCampanhas() {
-        if (campanhas.isEmpty()) {
-            System.out.println("\nNenhuma campanha cadastrada.");
-        } else {
-            System.out.println("\nCampanhas cadastradas:");
-            for (Campanha campanha : campanhas) {
-                System.out.println("- " + campanha.getNome() + " (Código: " + campanha.getCodigo() + ")");
-            }
-        }
-    }
-
-    private static void listarUsuarios(List<Usuario> usuarios) {
-        if (usuarios.isEmpty()) {
-            System.out.println("\nNenhum usuário cadastrado.");
-        } else {
-            System.out.println("\nUsuários cadastrados:");
-            for (Usuario usuario : usuarios) {
-                System.out.println("- " + usuario.getNome() + " (" + usuario.getEmail() + ")");
-            }
-        }
-    }
-
-    private static void gerarRelatorios(List<Usuario> usuarios, List<Incidente> incidentes) {
-        int totalCampanhas = campanhas.size();
-        int totalUsuarios = usuarios.size();
-        int totalIncidentes = incidentes.size();
-
-        System.out.println("\n=== RELATÓRIO ===\n");
-        System.out.println("    Total de Campanhas: " + totalCampanhas);
-        System.out.println("    Total de Usuários: " + totalUsuarios);
-        System.out.println("    Total de Incidentes: " + totalIncidentes);
     }
 }

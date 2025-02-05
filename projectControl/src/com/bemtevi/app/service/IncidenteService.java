@@ -1,6 +1,7 @@
 package com.bemtevi.app.service;
 
 import com.bemtevi.app.interfaces.Gerenciavel;
+import com.bemtevi.app.model.Campanha;
 import com.bemtevi.app.model.Incidente;
 import java.time.LocalDate;
 import java.util.List;
@@ -15,14 +16,19 @@ public class IncidenteService implements Gerenciavel<Incidente> {
 
     @Override
     public List<Incidente> listar(List<Incidente> lista) {
-        for (Incidente incidente : lista) {
-            System.out.println(incidente);
+        if (lista.isEmpty()) {
+            System.out.println("Nenhum incidente cadastrado.");
+        }else{
+            System.out.println("Incidentes cadastrados:");
+            for (Incidente incidente : lista) {
+                System.out.println(incidente);
+            }
         }
         return lista;
     }
 
     // Listar incidentes por data
-    public void listarIncidentesPorData(String data, List<Incidente> lista) {
+    public void listarIncidentesPorDataHora(String data, List<Incidente> lista) {
         LocalDate dataConsultada = LocalDate.parse(data); // Converte a string de data para LocalDate
 
         System.out.println("Incidentes na data: " + data);
