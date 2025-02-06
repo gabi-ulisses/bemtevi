@@ -18,7 +18,7 @@ package com.bemtevi.app.model;
  *   o tipo, o nome do usuário, a campanha e o valor.
  */
 public class Contribuicao {
-    private TipoContribuicao tipoContribuicao;  // Alterando para usar o enum
+    private TipoContribuicao tipoContribuicao;  
     private Usuario usuario;                    // Pessoa que está contribuindo
     private Campanha campanha;                  // Campanha à qual está sendo feita a contribuição
     private double valor;                        // O valor da contribuição (opcional, caso queira adicionar)

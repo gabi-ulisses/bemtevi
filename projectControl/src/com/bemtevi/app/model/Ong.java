@@ -3,7 +3,7 @@ package com.bemtevi.app.model;
 /**
  * Classe responsável por representar uma ONG (Organização Não Governamental).
  * 
- * Esta classe estende a classe {@link Usuario} e adiciona o atributo específico
+ * Esta classe estende a classe Usuario e adiciona o atributo específico
  * de uma ONG, que é o CNPJ (Cadastro Nacional da Pessoa Jurídica). Além disso, 
  * implementa o método de validação de senha, permitindo que a ONG valide sua 
  * senha no sistema.

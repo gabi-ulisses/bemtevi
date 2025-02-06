@@ -109,7 +109,7 @@ public class UsuarioComumView {
                         System.out.println("    2 - Listar Incidentes por Local");
                         System.out.print("\nOpção: ");
                         int opcaoListagem = ler.nextInt();
-                        ler.nextLine();  // Consumir o newline deixado pelo nextInt()
+                        ler.nextLine();  
 
                         switch (opcaoListagem) {
                             case 1:
@@ -190,7 +190,7 @@ public class UsuarioComumView {
 
                 case 5:
                     System.out.println("\n          Obrigada por utilizar nosso sistema, " + usuarioLogado.getNome() +"!");
-                    return;  // Termina o loop e sai do método
+                    return;  
 
                 default:
                     System.out.println("\nOpção inválida!");

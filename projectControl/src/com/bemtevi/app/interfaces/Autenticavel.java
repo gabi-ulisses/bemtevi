@@ -9,8 +9,6 @@ import com.bemtevi.app.model.Usuario;
  * 
  * Métodos principais:
  * - **autenticar**: Realiza a autenticação do usuário com base no email e senha fornecidos.
- * - **verificarSenha**: Verifica se a senha fornecida corresponde à senha do usuário.
- * - **verificarEmail**: Verifica se o email fornecido existe na lista de usuários.
  * 
  * A interface pode ser implementada por classes que necessitam de funcionalidades de autenticação de usuários.
  */

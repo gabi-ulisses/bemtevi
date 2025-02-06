@@ -101,7 +101,8 @@ public class Main {
                         senha = ler.nextLine();
                         System.out.print("      Tipo de usuário (1 - Usuário Comum, 2 - ONG): ");
                         int tipo = ler.nextInt();
-                        
+                        ler.nextLine();
+
                         if (tipo == 1) {
                             usuarioLogado = new UsuarioComum(nome, email, telefone, senha);
                         } else if (tipo == 2) {

@@ -28,18 +28,18 @@ public class OngView {
             System.out.println("3 - Logout");
             System.out.print("\nOpção: ");
             int opcao = ler.nextInt();
-            ler.nextLine(); // Consumir o newline após o nextInt
+            ler.nextLine(); 
 
             switch (opcao) {
                 case 1:
-                    // Perguntar tipo de contribuição
+                    
                     System.out.println("\n  Escolha o tipo de contribuição da campanha:");
                     System.out.println("1 - Alimentos");
                     System.out.println("2 - Dinheiro");
                     System.out.println("3 - Roupas");
                     System.out.print("\nOpção: ");
                     int tipoContribuicaoEscolhido = ler.nextInt();
-                    ler.nextLine(); // Consumir o newline
+                    ler.nextLine(); 
 
                     TipoContribuicao tipoContribuicao = TipoContribuicao.ALIMENTOS; // Default
                     switch (tipoContribuicaoEscolhido) {
@@ -75,14 +75,13 @@ public class OngView {
                     double metaArrecadacao = ler.nextDouble();
                     System.out.print("Duração (em dias): ");
                     int duracao = ler.nextInt();
-                    ler.nextLine(); // Consumir o newline após o nextInt
+                    ler.nextLine(); 
                     System.out.print("Local de atuação: ");
                     String localAtuacao = ler.nextLine();
 
                     // Criação da campanha associada à ONG logada
                     Campanha novaCampanha = new Campanha(onglogada, tipoContribuicao, causa, codigo, nome, descricao, identificacaoFiscal, metaArrecadacao, duracao, localAtuacao);
 
-                    // Cadastrar a campanha
                     campanhaService.cadastrar(novaCampanha, campanhas);
                     break;
 
@@ -92,7 +91,7 @@ public class OngView {
 
                 case 3:
                     System.out.println("\n          Obrigada por utilizar nosso sistema, " + onglogada.getNome() +"!");
-                    return;  // Termina o loop e sai do método
+                    return;  
 
                 default:
                     System.out.println("\nOpção inválida! Tente novamente.");
