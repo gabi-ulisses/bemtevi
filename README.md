@@ -4,8 +4,10 @@ Sistema de gerenciamento e monitoramento de desastres naturais com linguagem Jav
 
 O Brasil é frequentemente impactado por desastres naturais, como enchentes, deslizamentos e queimadas. Nesse contexto, o BemTeVi foi idealizado para centralizar a comunicação e a colaboração em situações emergenciais, promovendo agilidade e solidariedade. O sistema tem como objetivo principal centralizar a gestão e o monitoramento de desastres naturais, além de facilitar campanhas de arrecadação para mitigar os impactos desses eventos.
 
-*Autoras:*
-Ana Beatriz Duarte e Gabrielle Ulisses
+### Desenvolvido por: 
+[![Ana Beatriz Rocha Duarte](https://github.com/AnaDuarte1.png?size=50)](https://github.com/AnaDuarte1) [![Gabrielle Ulisses](https://github.com/gabi-ulisses.png?size=50)](https://github.com/gabi-ulisses) 
+
+*Projeto final da disciplina de "Introdução a Orientação a Objetos",do curso de **Tecnologia em Sistemas para Internet** do **IFSP - Câmpus Araraquara***
 
 ---
  ## Pré-requisitos
